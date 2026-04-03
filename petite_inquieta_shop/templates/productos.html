@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Productos | Petite Inquieta{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Catálogo de Productos</h2>
+        <p>Explora las creaciones de Petite Inquieta.</p>
+
+        {% if user.is_authenticated %}
+            <div class="mb-4">
+                <a href="{% url 'producto_create' %}" class="btn btn-success">+ Agregar Nuevo Producto</a>
+            </div>
+        {% endif %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="row">
+            {% for producto in productos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if producto.imagen_url %}
+                            <img src="{{ producto.imagen_url }}" class="card-img-top" alt="{{ producto.nombre }}" style="height: 200px; object-fit: cover;">
+                        {% endif %}
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.nombre }}</h5>
+                            <h6 class="text-muted">{{ producto.categoria.nombre }}</h6>
+                            <p class="card-text">{{ producto.descripcion|truncatechars:100 }}</p>
+                            <p class="fw-bold fs-5">${{ producto.precio }}</p>
+                            <p class="text-sm">Stock disponible: {{ producto.stock }}</p>
+                        </div>
+
+                        {% if user.is_authenticated %}
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <a href="{% url 'producto_edit' producto.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                <a href="{% url 'producto_delete' producto.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <p class="alert alert-info">Aún no hay productos en el catálogo. ¡Crea el primero!</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

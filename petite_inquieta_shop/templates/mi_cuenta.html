@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Mi cuenta | Petite Inquieta{% endblock %}
+
+{% block content %}
+    <h2>Mi cuenta</h2>
+    <p>Bienvenida, {{ user.username }}.</p>
+    <p>Esta es una vista protegida, disponible solo para usuarios autenticados.</p>
+{% endblock %}

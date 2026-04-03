@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Petite Inquieta{% endblock %}
+
+{% block content %}
+    <h2>Iniciar sesión</h2>
+    <p>Ingresa con tu cuenta para acceder a tu espacio en Petite Inquieta.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ingresar</button>
+    </form>
+{% endblock %}
