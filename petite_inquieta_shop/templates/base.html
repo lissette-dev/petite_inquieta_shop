@@ -14,13 +14,27 @@
 
     <header style="background:#ffffff;border-bottom:1.5px solid #f2ddd5;padding:0;box-shadow:none;">
 
+        <!-- Barra superior -->
         <div style="background:#3d1f0f;padding:7px 24px;text-align:center;font-size:11px;letter-spacing:2px;color:#f2ddd5;text-transform:uppercase;font-family:'Nunito',sans-serif;">
             cerámica · ilustración · accesorios
         </div>
 
-        <div style="text-align:center;padding:20px 24px 0;">
-            <p style="font-size:10px;color:#c0725a;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;font-family:'Nunito',sans-serif;">tienda artesanal</p>
-            <h1 style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#3d1f0f;letter-spacing:1px;margin:0;">Petite Inquieta</h1>
+        <!-- Logo + Título -->
+        <div style="display:flex;align-items:center;justify-content:center;padding:16px 32px;position:relative;">
+
+            <!-- Logo izquierda -->
+            <div style="position:absolute;left:32px;top:3px;display:flex;align-items:center;gap:10px;">
+                <div style="width:110px;height:110px;border-radius:50%;background:#fcfcfc;border:2.5px solid #f4c0d1;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                    <img src="{% static 'img/logo.png' %}" alt="Petite Inquieta logo" style="height:100px;width:100px;object-fit:contain;">
+                </div>
+            </div>
+
+            <!-- Título centrado -->
+            <div style="text-align:center;">
+                <p style="font-size:10px;color:#c0725a;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;font-family:'Nunito',sans-serif;">tienda artesanal</p>
+                <h1 style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#3d1f0f;letter-spacing:1px;margin:0;">Petite Inquieta</h1>
+            </div>
+
         </div>
 
         {% include "partials/navbar.html" %}
@@ -32,7 +46,7 @@
     </main>
 
     <footer style="background:#3d1f0f;color:#f2ddd5;text-align:center;padding:20px;font-size:12px;letter-spacing:1px;margin-top:60px;font-family:'Nunito',sans-serif;">
-        © 2026 Petite Inquieta · Hecho con amor y cerámica
+        © 2025 Petite Inquieta · Hecho con amor y cerámica
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
