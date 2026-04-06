@@ -153,3 +153,26 @@ hr {
     background-color: #d2c2b4;
     margin: 20px 0;
 }
+
+
+/* ===== CARRITO FLOTANTE ===== */
+#carrito-flotante {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    font-size: 1.6rem;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+#carrito-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #e8603c;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 2px 6px;
+}

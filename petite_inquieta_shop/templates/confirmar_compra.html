@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Compra{% endblock %}
+
+{% block content %}
+
+<div class="container py-4" style="max-width: 650px;">
+    <h2 class="mb-4" style="color: #5d4037;">Resumen de tu pedido</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Resumen de items -->
+    <div class="card border-0 shadow-sm mb-4" style="border-radius: 16px;">
+        <div class="card-body p-4">
+            {% for item in orden.items.all %}
+            <div class="d-flex justify-content-between align-items-center py-2" style="border-bottom: 1px solid #f0e6dc;">
+                <div>
+                    <span class="fw-600">{{ item.producto.nombre }}</span>
+                    <span class="text-muted small ms-2">x{{ item.cantidad }}</span>
+                </div>
+                <span style="color: #5d4037;">${{ item.subtotal }}</span>
+            </div>
+            {% endfor %}
+
+            <!-- Total -->
+            <div class="d-flex justify-content-between align-items-center pt-3 mt-2">
+                <span class="fs-5 fw-bold" style="color: #5d4037;">Total</span>
+                <span class="fs-5 fw-bold" style="color: #5d4037;">${{ orden.total }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="d-flex justify-content-between gap-3">
+        <a href="{% url 'ver_carrito' %}" class="btn flex-fill" style="background-color: #e8ddd1; color: #5d4037; font-weight: 600;">
+            ← Volver al carrito
+        </a>
+
+        <form method="post" class="flex-fill">
+            {% csrf_token %}
+            <button type="submit" class="btn w-100" style="background-color: #02801C; color: white; font-weight: 600; padding: 10px;">
+                ✓ Confirmar y finalizar compra
+            </button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
