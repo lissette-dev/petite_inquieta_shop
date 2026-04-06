@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Carrito de Compras{% endblock %}
+{% block title %}Carrito | Petite Inquieta{% endblock %}
 
 {% block content %}
 
-<div class="container py-4">
-    <h2 class="mb-4" style="color: #5d4037;">🛒 Tu Carrito</h2>
+<div style="max-width:800px;margin:40px auto;">
+
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:#3d1f0f;margin-bottom:24px;">Tu carrito</h2>
 
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-3" role="alert">
                 {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
@@ -18,78 +19,56 @@
 
     {% if orden.items.all %}
 
-        <div class="table-responsive">
-            <table class="table align-middle">
-                <thead style="background-color: #f5ede6;">
-                    <tr>
-                        <th>Producto</th>
-                        <th class="text-center">Precio unitario</th>
-                        <th class="text-center">Cantidad</th>
-                        <th class="text-center">Subtotal</th>
-                        <th class="text-center">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in orden.items.all %}
-                    <tr>
-                        <td><strong>{{ item.producto.nombre }}</strong></td>
-                        <td class="text-center">${{ item.precio_unitario }}</td>
-
-                        <!-- Actualizar cantidad -->
-                        <td class="text-center">
-                            <form method="post" action="{% url 'actualizar_cantidad' item.id %}" class="d-flex align-items-center justify-content-center gap-2">
-                                {% csrf_token %}
-                                <input
-                                    type="number"
-                                    name="cantidad"
-                                    value="{{ item.cantidad }}"
-                                    min="1"
-                                    class="form-control text-center"
-                                    style="width: 70px;"
-                                    onchange="this.form.submit()"
-                                >
-                            </form>
-                        </td>
-
-                        <td class="text-center">${{ item.subtotal }}</td>
-
-                        <!-- Quitar del carrito -->
-                        <td class="text-center">
-                            <form method="post" action="{% url 'quitar_del_carrito' item.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-sm" style="color: #c0392b;" title="Eliminar">
-                                    🗑️
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div style="background:#fff;border:1px solid #f2ddd5;border-radius:20px;overflow:hidden;margin-bottom:24px;">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr style="background:#f2ddd5;">
+                            <th style="font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3d1f0f;padding:14px 20px;border:none;">Producto</th>
+                            <th class="text-center" style="font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3d1f0f;padding:14px;border:none;">Precio</th>
+                            <th class="text-center" style="font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3d1f0f;padding:14px;border:none;">Cantidad</th>
+                            <th class="text-center" style="font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3d1f0f;padding:14px;border:none;">Subtotal</th>
+                            <th class="text-center" style="font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3d1f0f;padding:14px;border:none;">Quitar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in orden.items.all %}
+                        <tr style="border-bottom:1px solid #f2ddd5;">
+                            <td style="padding:16px 20px;font-family:'Nunito',sans-serif;font-weight:700;color:#3d1f0f;border:none;">{{ item.producto.nombre }}</td>
+                            <td class="text-center" style="padding:16px;font-family:'Nunito',sans-serif;color:#8b5a3a;border:none;">${{ item.precio_unitario }}</td>
+                            <td class="text-center" style="padding:16px;border:none;">
+                                <form method="post" action="{% url 'actualizar_cantidad' item.id %}" class="d-flex align-items-center justify-content-center gap-2">
+                                    {% csrf_token %}
+                                    <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" class="form-control text-center" style="width:70px;" onchange="this.form.submit()">
+                                </form>
+                            </td>
+                            <td class="text-center" style="padding:16px;font-family:'Nunito',sans-serif;font-weight:700;color:#3d1f0f;border:none;">${{ item.subtotal }}</td>
+                            <td class="text-center" style="padding:16px;border:none;">
+                                <form method="post" action="{% url 'quitar_del_carrito' item.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" style="background:none;border:none;font-size:16px;cursor:pointer;color:#d4537e;" title="Eliminar">🗑️</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- Total y acciones -->
-        <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
-            <a href="{% url 'productos' %}" class="btn" style="background-color: #e8ddd1; color: #5d4037; font-weight: 600;">
-                ← Seguir comprando
-            </a>
-
-            <div class="text-end">
-                <p class="fs-5 fw-bold" style="color: #5d4037;">
-                    Total: ${{ orden.total }}
-                </p>
-                <a href="{% url 'confirmar_compra' %}" class="btn" style="background-color: #02801C; color: white; font-weight: 600; padding: 10px 28px;">
-                    Confirmar compra ✓
-                </a>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <a href="{% url 'productos' %}" class="pi-btn-cafe">← Seguir comprando</a>
+            <div style="text-align:right;">
+                <p style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#3d1f0f;margin-bottom:12px;font-weight:700;">Total: ${{ orden.total }}</p>
+                <a href="{% url 'confirmar_compra' %}" class="pi-btn-verde" style="font-size:12px;padding:12px 28px;border-radius:12px;">Confirmar compra ✓</a>
             </div>
         </div>
 
     {% else %}
-        <div class="text-center py-5">
-            <p class="fs-5 text-muted">Tu carrito está vacío 🛒</p>
-            <a href="{% url 'productos' %}" class="btn mt-2" style="background-color: #5d4037; color: white; font-weight: 600;">
-                Ver productos
-            </a>
+        <div style="background:#fff;border:1px solid #f2ddd5;border-radius:20px;padding:60px;text-align:center;">
+            <div style="font-size:48px;margin-bottom:16px;">🛒</div>
+            <p style="font-family:'Nunito',sans-serif;font-size:15px;color:#a07060;margin-bottom:20px;">Tu carrito está vacío</p>
+            <a href="{% url 'productos' %}" class="pi-btn-verde">Ver productos</a>
         </div>
     {% endif %}
 
