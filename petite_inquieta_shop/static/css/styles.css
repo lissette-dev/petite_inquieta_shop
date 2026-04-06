@@ -1,79 +1,47 @@
-/* ===== ESTILO GENERAL ===== */
+/* ===== IMPORTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
 
+/* ===== BASE ===== */
 body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background-color: #f8f4ef;
-    color: #3d312c;
+    font-family: 'Nunito', sans-serif;
+    background-color: #fdf6f0;
+    color: #3d1f0f;
+    line-height: 1.6;
 }
 
-.contenedor {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* ===== HEADER ===== */
-
-.site-header {
-    background-color: #e8ddd1;
-    padding: 30px 0 20px 0;
-    border-bottom: 1px solid #d2c2b4;
-    margin-bottom: 30px;
-}
-
-.logo {
-    margin: 0;
-    font-size: 2.5rem;
-    text-align: center;
-    letter-spacing: 2px;
-    color: #5d4037;
-}
-
-/* ===== NAVBAR (VERSIÓN FINAL PRO) ===== */
-
+/* ===== NAVBAR ===== */
 .mi-navbar {
     display: flex;
     justify-content: center;
-    gap: 35px;
+    gap: 0;
     flex-wrap: wrap;
-    margin-top: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #d2c2b4;
+    margin-top: 16px;
+    border-top: 1.5px solid #f2ddd5;
+    padding: 0;
 }
 
-/* Links */
 .mi-navbar a {
     text-decoration: none !important;
-    color: #5d4037 !important;
-    font-weight: 600;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-/* Hover elegante con línea */
-.mi-navbar a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #8b5e3c;
-    left: 0;
-    bottom: -5px;
-    transition: width 0.3s ease;
-}
-
-.mi-navbar a:hover::after {
-    width: 100%;
+    color: #8b5a3a !important;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-bottom: 2.5px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    font-family: 'Nunito', sans-serif;
 }
 
 .mi-navbar a:hover {
-    color: #8b5e3c !important;
+    color: #d4537e !important;
+    border-bottom-color: #d4537e;
 }
 
-/* Logout botón como link */
+.mi-navbar a::after {
+    display: none !important;
+}
+
 .logout-form {
     display: inline;
 }
@@ -81,98 +49,218 @@ body {
 .logout-form button {
     background: none;
     border: none;
-    color: #5d4037 !important;
-    font-weight: 600;
-    font-size: 1.3rem;
+    border-bottom: 2.5px solid transparent;
+    color: #8b5a3a;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     cursor: pointer;
-    padding: 0;
-    letter-spacing: 1px;
+    padding: 12px 20px;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .logout-form button:hover {
-    color: #8b5e3c !important;
+    color: #d4537e;
+    border-bottom-color: #d4537e;
 }
 
-/* ===== CONTENIDO ===== */
-
-main {
-    padding-bottom: 40px;
+/* ===== CARDS PROPIAS (sin conflicto Bootstrap) ===== */
+.pi-card {
+    background: #ffffff;
+    border: 1px solid #f2ddd5 !important;
+    border-radius: 16px !important;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.5s ease both;
 }
 
-section {
-    background-color: #fffaf5;
-    border: 1px solid #e2d6ca;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
+.pi-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 32px rgba(61, 31, 15, 0.12) !important;
+    background: #fffaf8;
 }
 
-h2, h3 {
-    color: #5c4438;
-}
-
-/* ===== TARJETAS (PRODUCTOS / CATEGORÍAS) ===== */
-
-.tarjetas {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    justify-content: center;
-}
-
-.tarjeta {
-    background-color: #fffaf5;
-    border: 1px solid #e2d6ca;
-    border-radius: 15px;
-    padding: 25px;
-    flex: 1 1 250px;
-    max-width: 300px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-/* Efecto hover tipo tienda */
-.tarjeta:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    background-color: #fffdf9;
-}
-
-.tarjeta h4 {
-    margin-top: 0;
-    color: #5c4438;
-}
-
-/* ===== DETALLES EXTRA ===== */
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: #d2c2b4;
-    margin: 20px 0;
-}
-
-
-/* ===== CARRITO FLOTANTE ===== */
-#carrito-flotante {
-    position: fixed;
-    top: 20px;
-    right: 24px;
-    font-size: 1.6rem;
-    z-index: 9999;
-    text-decoration: none;
-}
-
-#carrito-badge {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background: #e8603c;
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
+.pi-icon {
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    padding: 2px 6px;
+    border: 1.5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 14px;
+}
+
+.pi-card-title {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: #3d1f0f !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.pi-card-text {
+    color: #a07060 !important;
+    font-size: 12px !important;
+    line-height: 1.5;
+}
+
+/* ===== BOTONES PROPIOS ===== */
+.pi-btn-verde {
+    display: inline-block;
+    margin-top: 14px;
+    background: #02801C;
+    color: #ffffff !important;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 7px 20px;
+    border-radius: 20px;
+    text-decoration: none !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Nunito', sans-serif;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.pi-btn-verde:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+    color: #ffffff !important;
+}
+
+.pi-btn-cafe {
+    display: inline-block;
+    background: #3d1f0f;
+    color: #ffffff !important;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 7px 20px;
+    border-radius: 20px;
+    text-decoration: none !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.pi-btn-cafe:hover {
+    background: #8b5a3a;
+    transform: translateY(-1px);
+    color: #ffffff !important;
+}
+
+.pi-btn-rosado {
+    display: inline-block;
+    background: #fbeaf0;
+    color: #d4537e !important;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 7px 20px;
+    border-radius: 20px;
+    text-decoration: none !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Nunito', sans-serif;
+    border: 1px solid #f4c0d1;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+/* ===== ALERTAS ===== */
+.alert {
+    border-radius: 12px !important;
+    border: none !important;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+}
+
+.alert-success { background: #f0faf4 !important; color: #02601A !important; }
+.alert-warning { background: #fff8e1 !important; color: #7a5c00 !important; }
+.alert-danger  { background: #fdecea !important; color: #9b1c1c !important; }
+.alert-info    { background: #fbeaf0 !important; color: #993556 !important; }
+
+/* ===== TABLA CARRITO ===== */
+.table thead tr {
+    background-color: #f2ddd5 !important;
+}
+
+.table thead th {
+    font-weight: 800 !important;
+    font-size: 11px !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none !important;
+    padding: 14px 12px !important;
+    color: #3d1f0f !important;
+    font-family: 'Nunito', sans-serif;
+}
+
+.table tbody td {
+    border: none !important;
+    border-bottom: 1px solid #f2ddd5 !important;
+    padding: 14px 12px !important;
+    vertical-align: middle !important;
+    color: #3d1f0f;
+    font-size: 14px;
+}
+
+/* ===== FORMULARIOS ===== */
+.form-control {
+    border: 1.5px solid #f2ddd5 !important;
+    border-radius: 10px !important;
+    font-family: 'Nunito', sans-serif !important;
+    font-size: 14px !important;
+    color: #3d1f0f !important;
+}
+
+.form-control:focus {
+    border-color: #d4537e !important;
+    box-shadow: 0 0 0 3px rgba(212, 83, 126, 0.1) !important;
+}
+
+label {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #8b5a3a;
+    text-transform: uppercase;
+    margin-bottom: 6px !important;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* ===== HEADINGS ===== */
+h2, h3, h4, h5 {
+    font-family: 'Nunito', sans-serif;
+    color: #3d1f0f;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.col-md-4:nth-child(1) .pi-card { animation-delay: 0.1s; }
+.col-md-4:nth-child(2) .pi-card { animation-delay: 0.2s; }
+.col-md-4:nth-child(3) .pi-card { animation-delay: 0.3s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .mi-navbar a {
+        padding: 10px 10px;
+        font-size: 10px;
+    }
+    .logout-form button {
+        padding: 10px 10px;
+        font-size: 10px;
+    }
 }

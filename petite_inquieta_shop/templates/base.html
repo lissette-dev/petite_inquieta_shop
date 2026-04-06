@@ -5,28 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Petite Inquieta{% endblock %}</title>
-
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Tu CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 
-    <!-- Carrito flotante fijo (fuera de todo contenedor) -->
+    {% if user.is_authenticated %}<a href="{% url 'ver_carrito' %}" style="position:fixed;top:20px;right:24px;font-size:1.4rem;z-index:9999;text-decoration:none;background:#fbeaf0;border:1.5px solid #f4c0d1;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;">🛒{% if carrito_count > 0 %}<span style="position:absolute;top:-6px;right:-6px;background:#02801C;color:white;font-size:9px;font-weight:800;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;">{{ carrito_count }}</span>{% endif %}</a>{% endif %}
 
-        {% if user.is_authenticated %}
-        <a href="{% url 'ver_carrito' %}" style="position:fixed;top:20px;right:24px;font-size:1.6rem;z-index:9999;text-decoration:none;">
-            🛒{% if carrito_count > 0 %}<span style="position:absolute;top:-8px;right:-10px;background:#e8603c;color:white;font-size:11px;font-weight:700;border-radius:50%;padding:2px 6px;">{{ carrito_count }}</span>{% endif %}
-        </a>
-        {% endif %}
+    <header style="background:#ffffff;border-bottom:1.5px solid #f2ddd5;padding:0;box-shadow:none;">
 
-    <header class="bg-light py-3 shadow-sm">
-        <div class="container text-center">
-            <h1 class="display-3 fw-bold" style="color:#5d4037;">Petite Inquieta</h1>
-            {% include "partials/navbar.html" %}
+        <div style="background:#3d1f0f;padding:7px 24px;text-align:center;font-size:11px;letter-spacing:2px;color:#f2ddd5;text-transform:uppercase;font-family:'Nunito',sans-serif;">
+            cerámica · ilustración · accesorios
         </div>
+
+        <div style="text-align:center;padding:20px 24px 0;">
+            <p style="font-size:10px;color:#c0725a;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;font-family:'Nunito',sans-serif;">tienda artesanal</p>
+            <h1 style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#3d1f0f;letter-spacing:1px;margin:0;">Petite Inquieta</h1>
+        </div>
+
+        {% include "partials/navbar.html" %}
     </header>
 
     <main class="container mt-4">
@@ -34,8 +31,10 @@
         {% endblock %}
     </main>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <footer style="background:#3d1f0f;color:#f2ddd5;text-align:center;padding:20px;font-size:12px;letter-spacing:1px;margin-top:60px;font-family:'Nunito',sans-serif;">
+        © 2025 Petite Inquieta · Hecho con amor y cerámica
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,80 +1,53 @@
 {% extends "base.html" %}
 
+{% block title %}Inicio | Petite Inquieta{% endblock %}
+
 {% block content %}
-<style>
-    /* Efecto para que toda la tarjeta sea un link elegante */
-    .card-link {
-        text-decoration: none !important;
-        color: inherit !important;
-        display: block;
-        height: 100%;
-        transition: all 0.3s ease;
-    }
 
-    .card-link:hover {
-        transform: translateY(-10px);
-    }
-
-    .card-link:hover .card {
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
-        background-color: #fffaf0;
-    }
-
-    .card {
-        border: none;
-        border-radius: 15px;
-        background-color: #fdfaf6;
-        cursor: pointer;
-    }
-
-    .hero-section {
-        background-color: #fcf8f4;
-        padding: 60px 20px;
-        border-radius: 20px;
-        margin-bottom: 40px;
-    }
-</style>
-
-<div class="hero-section text-center shadow-sm border">
-    <h2 class="fw-bold">Bienvenid@</h2>
-    <p class="lead">Aquí encontrarás accesorios, piezas de cerámica e ilustraciones inspiradas en lo cotidiano, lo sensible y lo imperfecto.</p>
-    <hr class="my-4" style="width: 30%; margin: auto; border-top: 2px solid #5d4037;">
-    <p class="text-muted">Explora nuestras creaciones</p>
+<!-- Hero -->
+<div style="background:#fbeaf0;border:1px solid #f4c0d1;border-radius:20px;padding:60px 32px;margin-bottom:40px;text-align:center;">
+    <span style="display:inline-block;background:#fff;color:#d4537e;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;border:1px solid #f4c0d1;margin-bottom:20px;font-family:'Nunito',sans-serif;">Nueva colección 2025</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:#3d1f0f;margin-bottom:12px;">Bienvenid@</h2>
+    <p style="color:#8b5a3a;font-size:1rem;max-width:480px;margin:0 auto 28px;font-family:'Nunito',sans-serif;">Aquí encontrarás accesorios, piezas de cerámica e ilustraciones inspiradas en lo cotidiano, lo sensible y lo imperfecto.</p>
+    <a href="{% url 'productos' %}" style="display:inline-block;background:#3d1f0f;color:#fff;padding:12px 32px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:'Nunito',sans-serif;transition:background 0.3s ease;">Explora nuestras creaciones</a>
 </div>
 
-<div class="container mb-5">
-    <div class="row justify-content-center">
-        
-        <div class="col-md-4 col-sm-6 mb-4">
-            <a href="{% url 'productos' %}?categoria=Accesorios" class="card-link">
-                <div class="card h-100 shadow-sm p-4 text-center">
-                    <div class="display-5 mb-3">💍</div>
-                    <h3 style="color: #5d4037;">Accesorios</h3>
-                    <p class="text-muted small">Piezas delicadas para acompañar tu día a día.</p>
-                </div>
-            </a>
-        </div>
+<!-- Cards categorías -->
+<div class="row justify-content-center mb-5">
 
-        <div class="col-md-4 col-sm-6 mb-4">
-            <a href="{% url 'productos' %}?categoria=Piezas en cerámica" class="card-link">
-                <div class="card h-100 shadow-sm p-4 text-center">
-                    <div class="display-5 mb-3">🏺</div>
-                    <h3 style="color: #5d4037;">Piezas en cerámica</h3>
-                    <p class="text-muted small">Objetos de cerámica para espacios cálidos y sensibles.</p>
-                </div>
-            </a>
-        </div>
+    <div class="col-md-4 col-sm-6 mb-4">
+        <a href="{% url 'productos' %}?categoria=Accesorios" style="text-decoration:none;display:block;height:100%;">
+            <div class="pi-card h-100 p-4 text-center">
+                <div class="pi-icon" style="background:#fbeaf0;border-color:#f4c0d1;">💍</div>
+                <h3 class="pi-card-title">Accesorios</h3>
+                <p class="pi-card-text">Piezas delicadas para acompañar tu día a día.</p>
+                <span class="pi-btn-verde">Ver más</span>
+            </div>
+        </a>
+    </div>
 
-        <div class="col-md-4 col-sm-6 mb-4">
-            <a href="{% url 'productos' %}?categoria=Ilustraciones" class="card-link">
-                <div class="card h-100 shadow-sm p-4 text-center">
-                    <div class="display-5 mb-3">🎨</div>
-                    <h3 style="color: #5d4037;">Ilustraciones</h3>
-                    <p class="text-muted small">Imágenes pensadas desde lo íntimo, lo simple y lo imperfecto.</p>
-                </div>
-            </a>
-        </div>
+    <div class="col-md-4 col-sm-6 mb-4">
+        <a href="{% url 'productos' %}?categoria=Piezas en cerámica" style="text-decoration:none;display:block;height:100%;">
+            <div class="pi-card h-100 p-4 text-center">
+                <div class="pi-icon" style="background:#fdf6f0;border-color:#f2ddd5;">🏺</div>
+                <h3 class="pi-card-title">Piezas en cerámica</h3>
+                <p class="pi-card-text">Objetos de cerámica para espacios cálidos y sensibles.</p>
+                <span class="pi-btn-verde">Ver más</span>
+            </div>
+        </a>
+    </div>
 
-    </div> </div> 
-    
-    {% endblock %}
+    <div class="col-md-4 col-sm-6 mb-4">
+        <a href="{% url 'productos' %}?categoria=Ilustraciones" style="text-decoration:none;display:block;height:100%;">
+            <div class="pi-card h-100 p-4 text-center">
+                <div class="pi-icon" style="background:#f0faf4;border-color:#c0dd97;">🎨</div>
+                <h3 class="pi-card-title">Ilustraciones</h3>
+                <p class="pi-card-text">Imágenes pensadas desde lo íntimo, lo simple y lo imperfecto.</p>
+                <span class="pi-btn-verde">Ver más</span>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
