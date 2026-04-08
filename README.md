@@ -101,6 +101,38 @@ python manage.py runserver
 
 ---
 
+## Rutas principales
+
+| Ruta | Acceso | Descripción |
+|---|---|---|
+| `/` | Público | Página de inicio |
+| `/productos/` | Público | Catálogo de productos |
+| `/registro/` | Público | Crear cuenta |
+| `/login/` | Público | Iniciar sesión |
+| `/mi-cuenta/` | Cliente | Vista protegida |
+| `/carrito/` | Cliente | Ver carrito |
+| `/carrito/confirmar/` | Cliente | Confirmar compra |
+| `/products/create/` | Admin | Crear producto |
+| `/products/edit/<id>/` | Admin | Editar producto |
+| `/products/delete/<id>/` | Admin | Eliminar producto |
+
+---
+
+## Credenciales de prueba
+
+| Rol | Usuario | Contraseña |
+|---|---|---|
+| Admin | admin | tu_contraseña |
+| Cliente | Lissette2 | tu_contraseña |
+
+---
+
 ## Autora
 
 **Lissette Cornejo** — [github.com/lissette-dev](https://github.com/lissette-dev)
+
+---
+
+## Repositorio
+
+[github.com/lissette-dev/petite_inquieta_shop](https://github.com/lissette-dev/petite_inquieta_shop)
