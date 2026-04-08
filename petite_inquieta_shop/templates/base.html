@@ -12,27 +12,27 @@
 
     {% if user.is_authenticated %}<a href="{% url 'ver_carrito' %}" style="position:fixed;top:20px;right:24px;font-size:1.4rem;z-index:9999;text-decoration:none;background:#fbeaf0;border:1.5px solid #f4c0d1;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;">🛒{% if carrito_count > 0 %}<span style="position:absolute;top:-6px;right:-6px;background:#02801C;color:white;font-size:9px;font-weight:800;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;">{{ carrito_count }}</span>{% endif %}</a>{% endif %}
 
-    <header style="background:#ffffff;border-bottom:1.5px solid #f2ddd5;padding:0;box-shadow:none;">
+    <header style="background:#ffffff;border-bottom:1.5px solid #f2ddd5;padding:0;box-shadow:none;position:sticky;top:0;z-index:1000;"></header>
 
         <!-- Barra superior -->
         <div style="background:#3d1f0f;padding:7px 24px;text-align:center;font-size:11px;letter-spacing:2px;color:#f2ddd5;text-transform:uppercase;font-family:'Nunito',sans-serif;">
             cerámica · ilustración · accesorios
         </div>
 
-        <!-- Logo + Título -->
-        <div style="display:flex;align-items:center;justify-content:center;padding:16px 32px;position:relative;">
+        <!-- Logo + Título: flex en desktop, columna en mobile -->
+        <div style="display:flex;align-items:center;justify-content:center;padding:16px 24px;position:relative;flex-wrap:wrap;gap:12px;">
 
-            <!-- Logo izquierda -->
-            <div style="position:absolute;left:32px;top:3px;display:flex;align-items:center;gap:10px;">
-                <div style="width:110px;height:110px;border-radius:50%;background:#fcfcfc;border:2.5px solid #f4c0d1;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                    <img src="{% static 'img/logo.png' %}" alt="Petite Inquieta logo" style="height:100px;width:100px;object-fit:contain;">
+            <!-- Logo -->
+            <div class="pi-logo-wrap">
+                <div style="width:90px;height:90px;border-radius:50%;background:#fcfcfc;border:2.5px solid #f4c0d1;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                    <img src="{% static 'img/logo.png' %}" alt="Petite Inquieta logo" style="height:80px;width:80px;object-fit:contain;">
                 </div>
             </div>
 
-            <!-- Título centrado -->
+            <!-- Título -->
             <div style="text-align:center;">
                 <p style="font-size:10px;color:#c0725a;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;font-family:'Nunito',sans-serif;">tienda artesanal</p>
-                <h1 style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#3d1f0f;letter-spacing:1px;margin:0;">Petite Inquieta</h1>
+                <h1 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#3d1f0f;letter-spacing:1px;margin:0;">Petite Inquieta</h1>
             </div>
 
         </div>

@@ -264,3 +264,47 @@ h2, h3, h4, h5 {
         font-size: 10px;
     }
 }
+
+/* ===== RESPONSIVE MOBILE ===== */
+.pi-navbar-wrap {
+    border-top: 1.5px solid #f2ddd5;
+    padding: 0 16px;
+}
+
+.pi-logo-wrap {
+    position: absolute;
+    left: 32px;
+    top: 3px;
+}
+
+@media (max-width: 768px) {
+    .pi-logo-wrap {
+        position: static;
+    }
+
+    header > div:nth-child(2) {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 1.6rem !important;
+    }
+
+    .mi-navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        border-top: none;
+        padding: 8px 0;
+    }
+
+    .mi-navbar a,
+    .logout-form button {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+        border-bottom: none;
+        border-top: 1px solid #f2ddd5;
+    }
+}
